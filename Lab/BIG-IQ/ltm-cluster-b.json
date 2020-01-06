@@ -1,0 +1,131 @@
+{
+    "class": "DO",
+    "declaration": {
+        "schemaVersion": "1.5.0",
+        "class": "Device",
+        "async": true,
+        "Common": {
+            "class": "Tenant",
+            "myLicense": {
+                "class": "License",
+                "licenseType": "licensePool",
+                "licensePool": "F5-BIG-MSP-LOADV04-LIC",
+                "skuKeyword1": "F5-BIG-MSP-LTM-1G",
+                "unitOfMeasure": "yearly",
+                "bigIpUsername": "{{user}}",
+                "bigIpPassword": "{{password}}"
+            },
+            "myProvision": {
+                "class": "Provision",
+                "ltm": "nominal",
+                "avr": "nominal"
+            },
+            "myDbVariables": {
+                "class": "DbVariables",
+                "ui.advisory.enabled": "true",
+                "ui.advisory.color": "red",
+                "ui.advisory.text": "{{bip2_hostname}}.{{domain}}"
+            },
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "192.168.0.5"
+                ],
+                "search": [
+                    "{{domain}}"
+                ]
+            },
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "192.168.0.5"
+                ],
+                "timezone": "America/Chicago"
+            },
+            "app_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.3",
+                        "tagged": false
+                    }
+                ]
+            },
+            "lab_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.2",
+                        "tagged": false
+                    }
+                ]
+            },
+            "web_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.1",
+                        "tagged": false
+                    }
+                ]
+            },
+            "app_self": {
+                "class": "SelfIp",
+                "address": "192.168.201.{{bip2_last_octet}}/24",
+                "vlan": "app_vlan"
+            },
+            "lab_self": {
+                "class": "SelfIp",
+                "address": "192.168.100.{{bip2_last_octet}}/24",
+                "vlan": "lab_vlan"
+            },
+            "web_self": {
+                "class": "SelfIp",
+                "address": "192.168.200.{{bip2_last_octet}}/24",
+                "vlan": "web_vlan"
+            },
+            "myConfigSync": {
+                "class": "ConfigSync",
+                "configsyncIp": "192.168.201.{{bip2_last_octet}}"
+            },
+            "myFailoverUnicast": {
+                "class": "FailoverUnicast",
+                "address": "192.168.201.{{bip2_last_octet}}"
+            },
+            "myDeviceGroup": {
+                "class": "DeviceGroup",
+                "type": "sync-failover",
+                "owner": "{{bip1_hostname}}.{{domain}}",
+                "members": [
+                    "{{bip1_hostname}}.{{domain}}",
+                    "{{bip2_hostname}}.{{domain}}"
+                ],
+                "autoSync": true,
+                "networkFailover": true
+            },
+            "myDeviceTrust": {
+                "class": "DeviceTrust",
+                "localUsername": "{{user}}",
+                "localPassword": "{{password}}",
+                "remoteHost": "192.168.201.{{bip1_last_octet}}",
+                "remoteUsername": "{{user}}",
+                "remotePassword": "{{password}}"
+            },
+            "hostname": "{{bip2_hostname}}.{{domain}}"
+        }
+    },
+    "targetUsername": "{{user}}",
+    "targetHost": "192.168.0.{{bip2_last_octet}}",
+    "targetPassphrase": "{{password}}",
+    "bigIqSettings": {
+        "failImportOnConflict": false,
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "clusterName": "ltm-cluster-rest",
+        "useBigiqSync": true,
+        "statsConfig": {
+            "enabled": true
+        }
+    }
+}
