@@ -1,0 +1,35 @@
+{
+    "class": "DO",
+    "declaration": {
+        "schemaVersion": "1.5.0",
+        "class": "Device",
+        "async": true,
+        "Common": {
+            "class": "Tenant",
+            "hostname": "{{bip2_hostname}}.{{domain}}",
+            "myLicense": {
+                "class": "License",
+                "licenseType": "licensePool",
+                "unitOfMeasure": "yearly",
+                "licensePool": "F5-BIG-MSP-LOADV04-LIC",
+                "skuKeyword1": "F5-BIG-MSP-LTM-1G",
+                "bigIpUsername": "{{user}}",
+                "bigIpPassword": "{{temp_password}}"
+            },
+            "myProvision": {
+                "class": "Provision",
+                "ltm": "nominal",
+                "avr": "nominal"
+            }
+        }
+    },
+    "targetUsername": "{{user}}",
+    "targetHost": "{{bip2_mgmt_address}}",
+    "targetPassphrase": "{{temp_password}}",
+    "bigIqSettings": {
+        "failImportOnConflict": false,
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "versionedConflictPolicy": "KEEP_VERSION"
+    }
+}
