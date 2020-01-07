@@ -78,6 +78,14 @@
             "myFailoverUnicast": {
                 "class": "FailoverUnicast",
                 "address": "{{bip1_int_address}}"
+            },
+            "myDeviceTrust": {
+                "class": "DeviceTrust",
+                "localUsername": "{{user}}",
+                "localPassword": "{{temp_password}}",
+                "remoteHost": "{{bip1_int_address}}",
+                "remoteUsername": "{{user}}",
+                "remotePassword": "{{temp_password}}"
             }
         }
     },
