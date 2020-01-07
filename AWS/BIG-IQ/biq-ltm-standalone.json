@@ -60,6 +60,16 @@
                         "tagged": false
                     }
                 ]
+            },
+            "ext_self": {
+                "class": "SelfIp",
+                "address": "{{bip1_ext_address}}/24",
+                "vlan": "ext_vlan"
+            },
+            "int_self": {
+                "class": "SelfIp",
+                "address": "{{bip1_int_address}}/24",
+                "vlan": "int_vlan"
             }
         }
     },
