@@ -20,6 +20,56 @@
                 "class": "Provision",
                 "ltm": "nominal",
                 "avr": "nominal"
+            },
+            "myDbVariables": {
+                "class": "DbVariables",
+                "ui.advisory.enabled": "true",
+                "ui.advisory.color": "red",
+                "ui.advisory.text": "{{bip2_hostname}}.{{domain}}"
+            },
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "10.0.0.2"
+                ],
+                "search": [
+                    "{{domain}}"
+                ]
+            },
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "pool.ntp.org"
+                ],
+                "timezone": "America/Chicago"
+            },
+            "ext_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.1",
+                        "tagged": false
+                    }
+                ]
+            },
+            "int_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.2",
+                        "tagged": false
+                    }
+                ]
+            },
+            "ext_self": {
+                "class": "SelfIp",
+                "address": "{{bip2_ext_address}}/24",
+                "vlan": "ext_vlan"
+            },
+            "int_self": {
+                "class": "SelfIp",
+                "address": "{{bip2_int_address}}/24",
+                "vlan": "int_vlan"
             }
         }
     },
@@ -30,6 +80,10 @@
         "failImportOnConflict": false,
         "conflictPolicy": "USE_BIGIQ",
         "deviceConflictPolicy": "USE_BIGIP",
-        "versionedConflictPolicy": "KEEP_VERSION"
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "statsConfig": {
+            "enabled": true,
+            "zone": "{{bip2_zone}}"
+        }
     }
 }
