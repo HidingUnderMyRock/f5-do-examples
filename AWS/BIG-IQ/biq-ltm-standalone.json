@@ -80,6 +80,10 @@
         "failImportOnConflict": false,
         "conflictPolicy": "USE_BIGIQ",
         "deviceConflictPolicy": "USE_BIGIP",
-        "versionedConflictPolicy": "KEEP_VERSION"
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "statsConfig": {
+            "enabled": true,
+            "zone": "{{bip1_zone}}"
+        }
     }
 }
