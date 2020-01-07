@@ -20,6 +20,46 @@
                 "class": "Provision",
                 "ltm": "nominal",
                 "avr": "nominal"
+            },
+            "myDbVariables": {
+                "class": "DbVariables",
+                "ui.advisory.enabled": "true",
+                "ui.advisory.color": "red",
+                "ui.advisory.text": "{{bip1_hostname}}.{{domain}}"
+            },
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "10.0.0.2"
+                ],
+                "search": [
+                    "{{domain}}"
+                ]
+            },
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "pool.ntp.org"
+                ],
+                "timezone": "America/Chicago"
+            },
+            "ext_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.1",
+                        "tagged": false
+                    }
+                ]
+            },
+            "int_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.2",
+                        "tagged": false
+                    }
+                ]
             }
         }
     },
