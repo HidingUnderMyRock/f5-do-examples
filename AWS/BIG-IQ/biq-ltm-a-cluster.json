@@ -86,6 +86,17 @@
                 "remoteHost": "{{bip1_int_address}}",
                 "remoteUsername": "{{user}}",
                 "remotePassword": "{{temp_password}}"
+            },
+            "myDeviceGroup": {
+                "class": "DeviceGroup",
+                "type": "sync-failover",
+                "owner": "{{bip1_hostname}}.{{domain}}",
+                "members": [
+                    "{{bip1_hostname}}.{{domain}}",
+                    "{{bip2_hostname}}.{{domain}}"
+                ],
+                "autoSync": true,
+                "networkFailover": true
             }
         }
     },
@@ -97,6 +108,8 @@
         "conflictPolicy": "USE_BIGIQ",
         "deviceConflictPolicy": "USE_BIGIP",
         "versionedConflictPolicy": "KEEP_VERSION",
+        "clusterName": "{{biq_cluster_name}}",
+        "useBigiqSync": true,
         "statsConfig": {
             "enabled": true,
             "zone": "{{bip1_zone}}"
