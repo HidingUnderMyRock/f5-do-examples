@@ -70,6 +70,14 @@
                 "class": "SelfIp",
                 "address": "{{bip1_int_address}}/24",
                 "vlan": "int_vlan"
+            },
+            "myConfigSync": {
+                "class": "ConfigSync",
+                "configsyncIp": "{{bip1_int_address}}"
+            },
+            "myFailoverUnicast": {
+                "class": "FailoverUnicast",
+                "address": "{{bip1_int_address}}"
             }
         }
     },
