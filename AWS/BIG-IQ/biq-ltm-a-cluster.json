@@ -14,7 +14,7 @@
                 "licensePool": "F5-BIG-MSP-LOADV04-LIC",
                 "skuKeyword1": "F5-BIG-MSP-LTM-1G",
                 "bigIpUsername": "{{user}}",
-                "bigIpPassword": "{{temp_password}}"
+                "bigIpPassword": "{{password}}"
             },
             "myProvision": {
                 "class": "Provision",
@@ -82,10 +82,10 @@
             "myDeviceTrust": {
                 "class": "DeviceTrust",
                 "localUsername": "{{user}}",
-                "localPassword": "{{temp_password}}",
+                "localPassword": "{{password}}",
                 "remoteHost": "{{bip1_int_address}}",
                 "remoteUsername": "{{user}}",
-                "remotePassword": "{{temp_password}}"
+                "remotePassword": "{{password}}"
             },
             "myDeviceGroup": {
                 "class": "DeviceGroup",
@@ -97,6 +97,12 @@
                 ],
                 "autoSync": true,
                 "networkFailover": true
+            },
+            "admin": {
+                "class": "User",
+                "userType": "regular",
+                "password": "{{password}}",
+                "shell": "tmsh"
             }
         }
     },
