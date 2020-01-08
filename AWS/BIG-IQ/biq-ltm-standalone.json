@@ -70,6 +70,12 @@
                 "class": "SelfIp",
                 "address": "{{bip1_int_address}}/24",
                 "vlan": "int_vlan"
+            },
+            "admin": {
+                "class": "User",
+                "userType": "regular",
+                "password": "{{password}}",
+                "shell": "tmsh"
             }
         }
     },
