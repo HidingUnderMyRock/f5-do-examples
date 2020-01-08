@@ -1,4 +1,4 @@
-# AWS Declarations direct to BIG-IP
+# AWS DO Declarations direct to BIG-IP
 
 ## Description
 

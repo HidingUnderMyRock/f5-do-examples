@@ -1,4 +1,4 @@
-# AWS Declarations via BIG-IQ
+# AWS DO Declarations via BIG-IQ
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Lab Declarations via BIG-IQ
+# Home Lab DO Declarations via BIG-IQ
 
 ## Description
 
