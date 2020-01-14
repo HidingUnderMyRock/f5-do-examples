@@ -75,7 +75,10 @@
                 "class": "User",
                 "userType": "regular",
                 "password": "{{password}}",
-                "shell": "tmsh"
+                "shell": "tmsh",
+                "keys": [
+                    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDzVstlOYLpHTwp5MxRBEjMHh1rmTrvutwsCCcHqKNSyqLC2NCT92w0/gehwxqW+KgKmBBJ9toy99kQNOnMjOxvzp6pjjxYNj7GLInmsdFuz/2NNSZi76wa+CRNjKZ0yyQ+oA5c+GYNRL3NdK4YeJGeagOdo1F49q+7WQyCziUq8KhjYxY39XPtPpb1NPOv3b/Sj8h3O9mbxujuYGH+AGzoaV7gl0qRdXQwUapeWrukGn7r0gy+xsgludSEVzEPAZ3pqmKSUze9LKSoBorFaqHl4Kk5KGvITRINnQr8nnbu0r+w1Wv/CmPSPmBSx0qqItzOJl0AYMNoY0x/6i2dkV4r lipowsky-aws"
+                ]
             }
         }
     },
