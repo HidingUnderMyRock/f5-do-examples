@@ -1,0 +1,127 @@
+{
+    "class": "DO",
+    "declaration": {
+        "schemaVersion": "1.5.0",
+        "class": "Device",
+        "async": true,
+        "Common": {
+            "class": "Tenant",
+            "hostname": "{{bip2_hostname}}.{{domain}}",
+            "myLicense": {
+                "class": "License",
+                "licenseType": "licensePool",
+                "unitOfMeasure": "yearly",
+                "licensePool": "F5-BIG-MSP-LOADV04-LIC",
+                "skuKeyword1": "F5-BIG-MSP-LTM-1G",
+                "bigIpUsername": "{{user}}",
+                "bigIpPassword": "{{password}}"
+            },
+            "myProvision": {
+                "class": "Provision",
+                "ltm": "nominal",
+                "avr": "nominal"
+            },
+            "myDbVariables": {
+                "class": "DbVariables",
+                "ui.advisory.enabled": "true",
+                "ui.advisory.color": "red",
+                "ui.advisory.text": "{{bip2_hostname}}.{{domain}}"
+            },
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "10.0.0.2"
+                ],
+                "search": [
+                    "{{domain}}"
+                ]
+            },
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "pool.ntp.org"
+                ],
+                "timezone": "America/Chicago"
+            },
+            "ext_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.1",
+                        "tagged": false
+                    }
+                ]
+            },
+            "int_vlan": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.2",
+                        "tagged": false
+                    }
+                ]
+            },
+            "ext_self": {
+                "class": "SelfIp",
+                "address": "{{bip2_ext_address}}/24",
+                "vlan": "ext_vlan"
+            },
+            "int_self": {
+                "class": "SelfIp",
+                "address": "{{bip2_int_address}}/24",
+                "vlan": "int_vlan"
+            },
+            "myConfigSync": {
+                "class": "ConfigSync",
+                "configsyncIp": "{{bip2_int_address}}"
+            },
+            "myFailoverUnicast": {
+                "class": "FailoverUnicast",
+                "address": "{{bip2_int_address}}"
+            },
+            "myDeviceTrust": {
+                "class": "DeviceTrust",
+                "localUsername": "{{user}}",
+                "localPassword": "{{password}}",
+                "remoteHost": "{{bip1_int_address}}",
+                "remoteUsername": "{{user}}",
+                "remotePassword": "{{password}}"
+            },
+            "myDeviceGroup": {
+                "class": "DeviceGroup",
+                "type": "sync-failover",
+                "owner": "{{bip1_hostname}}.{{domain}}",
+                "members": [
+                    "{{bip1_hostname}}.{{domain}}",
+                    "{{bip2_hostname}}.{{domain}}"
+                ],
+                "autoSync": true,
+                "networkFailover": true
+            },
+            "admin": {
+                "class": "User",
+                "userType": "regular",
+                "password": "{{password}}",
+                "shell": "tmsh",
+                "keys": [
+                    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDzVstlOYLpHTwp5MxRBEjMHh1rmTrvutwsCCcHqKNSyqLC2NCT92w0/gehwxqW+KgKmBBJ9toy99kQNOnMjOxvzp6pjjxYNj7GLInmsdFuz/2NNSZi76wa+CRNjKZ0yyQ+oA5c+GYNRL3NdK4YeJGeagOdo1F49q+7WQyCziUq8KhjYxY39XPtPpb1NPOv3b/Sj8h3O9mbxujuYGH+AGzoaV7gl0qRdXQwUapeWrukGn7r0gy+xsgludSEVzEPAZ3pqmKSUze9LKSoBorFaqHl4Kk5KGvITRINnQr8nnbu0r+w1Wv/CmPSPmBSx0qqItzOJl0AYMNoY0x/6i2dkV4r lipowsky-aws"
+                ]
+            }
+        }
+    },
+    "targetUsername": "{{user}}",
+    "targetHost": "{{bip2_mgmt_address}}",
+    "targetPassphrase": "{{temp_password}}",
+    "bigIqSettings": {
+        "failImportOnConflict": false,
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "clusterName": "{{biq_cluster_name}}",
+        "useBigiqSync": true,
+        "statsConfig": {
+            "enabled": true,
+            "zone": "{{bip2_zone}}"
+        }
+    }
+}
