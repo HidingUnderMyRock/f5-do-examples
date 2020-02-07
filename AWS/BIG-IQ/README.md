@@ -6,6 +6,8 @@ These declarations are for use within my AWS VPC, via the BIG-IQ instances that 
 
 | Filename/Directory | Description |
 | -------- | ----------- |
-| Different AZ | These declarations will be used when the BIG-IPs are deployed in different availability zones |
-| Same AZ | These declarations will be used when the BIG-IPs are deplyed in the same availability zone |
+| Across AZ | These declarations are used when the BIG-IP cluster is deployed across different availability zones |
+| Multi AZ | These declarations are used to deploy multiple clusters and standalone BIG-IPs.  Two clusters in one availability zone, another cluster in a different availability zone, and two standalone BIG-IPs for GSLB in both availability zones. |
+| Same AZ | These declarations are used when the BIG-IP cluster is deplyed in the same availability zone |
 | biq-ltm-standalone | This is for a standalone BIG-IP deployment |
+| biq-gslb-standalone | This is for a standalone GSLB deployment |
