@@ -12,7 +12,7 @@
                 "licenseType": "licensePool",
                 "unitOfMeasure": "yearly",
                 "licensePool": "F5-BIG-MSP-LOADV04-LIC",
-                "skuKeyword1": "F5-BIG-MSP-LTM-1G",
+                "skuKeyword1": "F5-BIG-MSP-DNSVE-1M",
                 "bigIpUsername": "{{user}}",
                 "bigIpPassword": "{{password}}"
             },
@@ -71,6 +71,11 @@
                 "class": "SelfIp",
                 "address": "{{bip6_int_address}}/24",
                 "vlan": "int_vlan"
+            },
+            "defaultRoute": {
+                "class": "Route",
+                "gw": "{{west_default_route}}",
+                "network": "default"
             },
             "admin": {
                 "class": "User",
