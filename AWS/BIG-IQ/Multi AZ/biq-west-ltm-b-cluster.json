@@ -71,6 +71,11 @@
                 "address": "{{bip4_int_address}}/24",
                 "vlan": "int_vlan"
             },
+            "defaultRoute": {
+                "class": "Route",
+                "gw": "{{west_default_route}}",
+                "network": "default"
+            },
             "myConfigSync": {
                 "class": "ConfigSync",
                 "configsyncIp": "{{bip4_int_address}}"
